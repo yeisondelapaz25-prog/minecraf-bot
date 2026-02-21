@@ -4,7 +4,8 @@ function createBot() {
   const bot = mineflayer.createBot({
     host: 'YeisonDdiaz.aternos.me',
     port: 28355,
-    username: 'BotRailway'
+    username: 'BotRailway',
+    version: false
   })
 
   bot.on('login', () => {
@@ -17,7 +18,7 @@ function createBot() {
   })
 
   bot.on('error', (err) => {
-    console.log('Error:', err)
+    console.log('Error:', err.message)
   })
 }
 
