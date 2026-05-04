@@ -2,8 +2,8 @@ const { createClient } = require('bedrock-protocol')
 
 function conectar() {
   const client = createClient({
-    host: 'TU-SERVER.aternos.me',
-    port: 38475,
+    host: 'Yeison.aternos.me',
+    port: 38475 ,
     username: 'YeisonBOT'
   })
 
