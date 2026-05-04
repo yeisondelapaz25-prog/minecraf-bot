@@ -1,25 +1,28 @@
-const mineflayer = require('mineflayer')
+const { createClient } = require('bedrock-protocol')
 
-function createBot() {
-  const bot = mineflayer.createBot({
-    host: 'YeisonDdiaz.aternos.me',
-    port: 28355,
-    username: 'BotRailway',
-    version: false
+function conectar() {
+  const client = createClient({
+    host: 'TU-SERVER.aternos.me',
+    port: 38475,
+    username: 'YeisonBOT'
   })
 
-  bot.on('login', () => {
-    console.log('Bot conectado correctamente')
+  client.on('join', () => {
+    console.log('✅ Bot conectado al servidor')
+
+    setInterval(() => {
+      console.log('Sigo activo...')
+    }, 30000)
   })
 
-  bot.on('end', () => {
-    console.log('Bot desconectado, reconectando...')
-    setTimeout(createBot, 5000)
+  client.on('disconnect', () => {
+    console.log('❌ Se desconectó, reconectando...')
+    setTimeout(conectar, 5000)
   })
 
-  bot.on('error', (err) => {
-    console.log('Error:', err.message)
+  client.on('error', (err) => {
+    console.log('⚠️ Error:', err.message)
   })
 }
 
-createBot()
+conectar()
